@@ -7,35 +7,38 @@ package:
 
 source:
   url: https://github.com/lyehe/lazyimread/archive/v{{ version }}.tar.gz
-  sha256: 419CB65AC503053EEB570B282457FCA1321535F1AE6FACB4EFDB77A3562FC8B0
+  sha256: 419cb65ac503053eeb570b282457fca1321535f1ae6facb4efdb77a3562fc8b0
 
 build:
   noarch: python
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
-
+  
 requirements:
   host:
-    - python >=3.10
+    - python {{ python_min }}
     - pip
     - hatchling
+    - setuptools
   run:
-    - python >=3.10
-    - numpy
-    - opencv
-    - tifffile
-    - h5py
-    - zarr
-    - xmltodict
-    - pyyaml
+    - python >={{ python_min }}
+    - numpy >=1.20
+    - opencv >=4.0
+    - tifffile >=2021.0
+    - h5py >=3.0
+    - zarr >=2.10
+    - xmltodict >=0.12
+    - pyyaml >=5.0
 
 test:
   imports:
     - lazyimread
   commands:
     - pip check
+    - python -c "import lazyimread; print(lazyimread.__version__)"
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/lyehe/lazyimread
