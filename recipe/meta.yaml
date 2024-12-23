@@ -1,5 +1,5 @@
 {% set name = "lazyimread" %}
-{% set version = "0.1.8" %}
+{% set version = "0.1.13" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/lyehe/lazyimread/archive/v{{ version }}.tar.gz
-  sha256: e96cfa2f55a11cf315c1cf07ff45370cd4b1ba89c798c688d648f479301b52d7
+  sha256: 5b878b9a8c62b2627a4869a341fee1fbf683de8164c0749f641a138cc2e16401
 
 build:
   noarch: python
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
-  
+
 requirements:
   host:
     - python {{ python_min }}
